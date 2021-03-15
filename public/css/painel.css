@@ -1,0 +1,54 @@
+body {
+    background-color: black;
+    
+}
+#ContainerGrafico{
+    left: 40px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    background-color: royalblue;
+    height: 280px;
+    width: 950px;
+    float: left;
+    border-radius: 30px;
+}
+#ContainerGastos{
+    position: relative;
+    display: flex;
+    height: 280px;
+    width: 250px;
+    background-color: sandybrown;
+    left: 70px;
+    float: left;
+    border-radius: 30px;
+
+}
+
+
+.Content{
+    border:1px solid;
+    padding-top: 30px;
+    
+}
+#divbutton{
+    height: 120px;
+    position: relative;
+    width: 200px;
+    background-color: steelblue;
+    padding-top: 40px;
+}
+#total{
+    background-color: turquoise;
+    position: relative;
+    height: 30px;
+    width: 20px;
+}
+#ListagemCategoria{
+    background-color: tomato;
+    position: relative;
+    height: 400px;
+    width: 1230px;
+    top: 300px;
+    left:40px ;
+}
