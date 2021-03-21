@@ -3,13 +3,10 @@
 <div class="container-central-form-despesa">
     <div id="container-form-despesa" class="col-sm-8">
         <div class="col-sm-12 d-flex flex-column justify-content-center" >
-            <form action="{{ route('despesas.create') }}" method="POST" enctype="multipart/form-data">
+            <form method="POST" action="{{route('despesas.edit', $despesa->id)}}" enctype="multipart/form-data">
                 @csrf
-                <div> 
-                    <a href="{{route('user.logout')}}">logout</a>
-                </div>
                 <div class="row m-1 mx-0">
-                    <div class="col mx-0 mt-1">
+                    <div class="col mx-0">
                         <input type="date"  id="input" class="form-control  {{$errors->has('data') ? 'is-invalid' : ''}}" name="data" id="data" placeholder="data">
                         @if($errors->has('data'))
                         <div class="invalid-feedback">
@@ -17,7 +14,7 @@
                         </div>
                         @endif 
                     </div>
-                    <div class="col mx-0 mt-1 ">
+                    <div class="col mx-0 ">
                         <input type="text"  id="input" class="form-control   {{$errors->has('valor') ? 'is-invalid' : ''}}" name="valor" id="valor" placeholder="valor">
                         @if($errors->has('valor'))
                             <div class="invalid-feedback">
@@ -36,7 +33,7 @@
                         @endif
                         </textarea>
                     </div>
-                    
+
                     <div class="form-group">
                         <input type="file" id="image"  id="input" name="image" class="from-control-file"  {{$errors->has('imagem') ? 'is-invalid' : ''}}>
                         @if($errors->has('imagem'))
@@ -45,6 +42,7 @@
                         </div>
                         @endif
                     </div>
+                    
                     <button type="submit" class="btn col-sm-6" id="btn-rosa">salvar</button>
                     <h5 id="texto-link" class="m-2"><a href="{{route('dashboard.index')}}" >Cancelar</a><h5>
 

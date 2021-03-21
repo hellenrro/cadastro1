@@ -1,54 +1,155 @@
-body {
-    background-color: black;
+body{
+    background: linear-gradient(to right, #fe813f 0%,  #fa5276 100%, #fe813f 50%, #EFECF3 100%);
+
+}
+#container-grafico{
+    background-color: #0A0A0B;
+    border-radius: 15px;
+}
+#container-total{
+    background-color: #1f1f1f;
+    border-radius: 15px;
+}
+#container-sem-cadastro{
+    background-color: #1f1f1f;
+    height:210px
+}
+#container-despesas{
+    background-color: #1f1f1f;
+    flex-direction: column;
+    border-radius: 15px;
+
+}
+#btn-rosa{
+    background-color: #fa5276;
+    border-color:#fa5276;
     
 }
-#ContainerGrafico{
-    left: 40px;
-    position: relative;
-    display: flex;
+#btn-preto{
+    background-color: #000000;
+    border-color: #000000;
+}
+#textos{
+    color: white;
+}
+#texto-rosa{
+    color:#fa5276;
+}
+#texto-preto{
+    color:#000000;
+    font-size: 15px;
+    font-weight: bold
+    
+}
+#texto-link{
+    color:#000000;
+    font-size: 15px;
+}
+#titulos{
+    color: #4F4A4A;
+}
+.info{
     justify-content: space-around;
-    background-color: royalblue;
-    height: 280px;
-    width: 950px;
-    float: left;
-    border-radius: 30px;
 }
-#ContainerGastos{
-    position: relative;
-    display: flex;
-    height: 280px;
-    width: 250px;
-    background-color: sandybrown;
-    left: 70px;
-    float: left;
-    border-radius: 30px;
-
+.description {
+    max-height: 170px;
+    overflow: hidden;
+  
 }
-
-
-.Content{
-    border:1px solid;
-    padding-top: 30px;
-    
-}
-#divbutton{
-    height: 120px;
-    position: relative;
-    width: 200px;
-    background-color: steelblue;
-    padding-top: 40px;
-}
-#total{
-    background-color: turquoise;
-    position: relative;
-    height: 30px;
+ion-icon {
+    height: 20px;
     width: 20px;
+    color:#fa5276
 }
-#ListagemCategoria{
-    background-color: tomato;
-    position: relative;
-    height: 400px;
-    width: 1230px;
-    top: 300px;
-    left:40px ;
+  
+label {
+    color: white;
+}
+
+.highcharts-figure, .highcharts-data-table table {
+    width: 300px; 
+    max-width: 300px;
+    margin: 1em auto;
+    height: 300px;
+  
+  }
+  .highcharts-data-table table {
+      font-family: Verdana, sans-serif;
+      border-collapse: collapse;
+      border: 1px solid #0A0A0B;
+      margin: 10px auto;
+      text-align: center;
+      width: 100%;
+      max-width: 300px;
+  }
+  .highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+  }
+  .highcharts-data-table th {
+      font-weight: 600;
+    padding: 0.5em;
+  }
+  .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+    padding: 0.5em;
+  }
+  .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+    background: #0A0A0B;
+  }
+  .highcharts-data-table tr:hover {
+    background: #0A0A0B;
+  }
+  .inputs-container {
+    display: flex;
+    flex-direction: column;
+    margin: 25px 0px 25px 0px;
+}
+.inputs-container-column {
+    display: flex;
+    flex-direction: row;
+}
+.container-central-form-despesa{
+width: 100vw;
+height: 100vh;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+background: linear-gradient(to right, #fe813f 0%,  #fa5276 100%, #fe813f 50%, #EFECF3 100%);
+}
+#container-form-despesa{       
+border-radius: 15px;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+text-align: center;
+background-color: #1f1f1f;
+height: 60vh;
+}
+.container-central-form{
+width: 100vw;
+height: 100vh;
+display: flex;
+background: linear-gradient(to right, #fe813f 0%,  #fa5276 100%, #fe813f 50%, #EFECF3 100%);
+flex-direction: row;
+justify-content: center;
+align-items: center;
+}
+#container-form{
+width: 60vh;
+height: 60vh;        
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+text-align: center;
+background-color: #1f1f1f;
+border-radius: 20px;
+
+}
+#input{
+    background-color: #414141; 
+    border-color:  #414141;
 }

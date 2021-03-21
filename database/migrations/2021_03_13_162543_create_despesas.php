@@ -18,10 +18,10 @@ class CreateDespesas extends Migration
                 $table->bigInteger('user_id')->unsigned();
                 $table->string('descricao', 200);
                 $table->date('data');
-                $table->string('Imagem');
+                $table->string('image');
                 $table->decimal('valor', 8, 2);
-                $table->timestamps();
                 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+                $table->timestamps();
         });
     }
 
