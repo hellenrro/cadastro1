@@ -26,8 +26,12 @@ body{
     
 }
 #btn-preto{
-    background-color: #000000;
-    border-color: #000000;
+    background-color: #1f1f1f;
+    border-color: #1f1f1f;
+}
+#btn-laranja{
+    background-color: #fe813f;
+    border-color: #fe813f;
 }
 #textos{
     color: white;
@@ -127,6 +131,8 @@ align-items: center;
 text-align: center;
 background-color: #1f1f1f;
 height: 60vh;
+min-height: 80vh;
+min-width: 66vh;
 }
 .container-central-form{
 width: 100vw;
@@ -152,4 +158,30 @@ border-radius: 20px;
 #input{
     background-color: #414141; 
     border-color:  #414141;
+}
+#select{
+    background-color: #414141; 
+}
+#img{
+    width: 280px; 
+    height: 160px; 
+    object-fit: cover; 
+    margin: 0 auto;
+}
+#container-form-listagem{       
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #1f1f1f;
+    height: 30vh;
+    min-height: 30vh;
+    min-width: 66vh;
+    width: 80vh;
+    }
+#container-despesas-principal{
+    background-color: #1f1f1f;
+    border-radius: 10px;
 }

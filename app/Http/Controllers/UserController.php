@@ -46,7 +46,7 @@ class UserController extends Controller
         {
             $validacao = [
                 'name'=>'required||max:60|min:3',
-                'email'=>'required|string|max:200|email',
+                'email'=>'required|email|unique:App\Models\Users,email',
                 'password'=>'required|min:4|max:15'
             ];
     
@@ -54,7 +54,8 @@ class UserController extends Controller
                 'name.required' =>'O campo nome é obrigatório!',
                 'name.min'=>'O nome informado é muito curto',
                 'name.max'=>'O campo nome deve conter no maximo 60 caracteres',
-                'email.required'=>'O email valor é obrigatório!',
+                'email.required'=>'O email  é obrigatório!',
+                'email.unique'=>'Esse email ja se enontra em uso!',
                 'email.email'=>'Formato de email inválido',
                 'password'=>'O campo senha é obrigatório',
                 'password'=>'A senha precisa conter letras e numeros',

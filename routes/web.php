@@ -29,6 +29,12 @@ Route::get('/despesa/{id}/delete',[App\Http\Controllers\DespesasController::clas
 Route::get('/despesas/{id}/edit',[App\Http\Controllers\DespesasController::class, 'edit'])->name('despesas.edit.index')->middleware('auth');
 Route::post('/despesas/{id}/edit',[App\Http\Controllers\DespesasController::class, 'update'])->name('despesas.edit')->middleware('auth');
 
+Route::get('/categoria/novo',[App\Http\Controllers\CategoriaController::class, 'create'])->name('categoria.create.index')->middleware('auth');
+Route::post('/categoria/novo',[App\Http\Controllers\CategoriaController::class, 'store'])->name('categoria.create')->middleware('auth');
+Route::get('/categoria/index',[App\Http\Controllers\CategoriaController::class, 'index'])->name('gerenciar.categoria')->middleware('auth');
+Route::get('/categoria/{id}/delete',[App\Http\Controllers\CategoriaController::class, 'delete'])->name('categoria.delete')->middleware('auth');
+
+
 Route::get('/Dashboard',[App\Http\Controllers\PainelController::class, 'Dashboard'])->name('dashboard.index')->middleware('auth');
 Route::get('/index',[App\Http\Controllers\PainelController::class, 'index'])->name('index.index')->middleware('auth');
 
