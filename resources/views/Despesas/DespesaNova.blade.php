@@ -7,7 +7,7 @@
                     @csrf
                     <div class="row m-1 mx-0">
                         <div class="col mx-0 mt-1">
-                            <input type="date" id="input"
+                            <input type="date" id="data"
                                 class="form-control  {{ $errors->has('data') ? 'is-invalid' : '' }}" name="data"
                                 placeholder="data">
                             @if ($errors->has('data'))
@@ -17,7 +17,7 @@
                             @endif
                         </div>
                         <div class="col mx-0 mt-1 ">
-                            <input type="text" id="input"
+                            <input type="text" id="valor"
                                 class="form-control   {{ $errors->has('valor') ? 'is-invalid' : '' }}" name="valor"
                                 placeholder="Valor da Despesa">
                             @if ($errors->has('valor'))
@@ -73,3 +73,4 @@
                 </form>
             </div>
         </div>
+        

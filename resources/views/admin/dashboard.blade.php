@@ -6,20 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/painel.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
     </script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <title>Painel Principal</title>
 </head>
 
 <body>
-    
+
     <div class="container mt-5">
         <div class="row mt-4">
-            <a href="{{ route('user.logout') }}"><button class="btn btn-success col-sm-2 mt-3 m-3 " id="btn-preto"> logout</button></a>
+            <a href="{{ route('user.logout') }}"><button class="btn btn-success col-sm-2 mt-3 m-3 " id="btn-preto">
+                    logout</button></a>
         </div>
         <div class="row">
             <div class="col-sm-8 mt-2 ">
@@ -43,7 +48,7 @@
                 <div class="row ">
                     <div class="col-sm-3">
                         <label>Categoria</label>
-                        <select class="form-control"  name="categoria">
+                        <select class="form-control" name="categoria">
                             @if (count($categorias) > 0)
                                 @foreach ($categorias as $categoria)
                                     <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
@@ -63,11 +68,13 @@
         @if (count($despesas) > 0)
             @foreach ($despesas as $despesa)
                 <div>
-                    <div class="row mt-4" id="container-despesas-principal" >
+                    <div class="row mt-4" id="container-despesas-principal">
                         <img class "img-responsive " id="img" src="/storage/{{ $despesa->image }}" alt="">
                         <div class="col d-flex justify-content-between py-4" id="container-despesas">
                             <div class="d-flex info">
                                 <label>Protocolo:{{ $despesa->id }} </label>
+                                <label>categoria:{{ $despesa->categoria != null ? $despesa->categoria->nome : 'vazia' }}
+                                </label>
                                 <label>R${{ $despesa->valor }}</label>
                                 <label>{{ date('d/m/Y', strtotime($despesa->data)) }}</label>
                             </div>
@@ -77,12 +84,13 @@
                             <div class="row">
                                 <div class="d-flex justify-content-center ">
                                     <div class="mx-5">
-                                        <a href="/storage/{{ $despesa->image }}">
-                                            <ion-icon name="eye-outline"></ion-icon>
-                                        </a>
+                                        <a href="#" class="card-link" data-toggle="modal"
+                                            data-target="#imagemmodal{{ $despesa->id }}">
+                                            <i id="icon" class="bi bi-image"></i>
                                     </div>
                                     <div class="mx-5">
-                                        <a href="{{ route('despesa.delete', $despesa->id) }}">
+                                        <a href="#" class="card-link" data-toggle="modal"
+                                            data-target="#alertamodal{{ $despesa->id }}">
                                             <ion-icon name="trash-outline"></ion-icon>
                                         </a>
                                     </div>
@@ -91,6 +99,47 @@
                                             <ion-icon name="pencil-outline"></ion-icon>
                                         </a>
                                     </div>
+
+                                    <div class="modal" id="alertamodal{{ $despesa->id }}" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title"> Excluir despesa</h5>
+                                                    <button type="button" class="close" data-dismiss="modal">
+                                                        <span>x</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Tem certeza que deseja deletar sua despesa?</p>
+                                                </div>
+                                                <div class="button-alerta">
+                                                    <a href="{{ route('despesa.delete', $despesa->id) }}">
+                                                        <button class="btn col-sm-6  m-2" id="btn-rosa">deletar</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal" id="imagemmodal{{ $despesa->id }}" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title"> Imagem de sua despesa</h5>
+                                                    <button type="button" class="close" data-dismiss="modal">
+                                                        <span>x</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div id="divImg">
+                                                        <img class "img-responsive " id="imgModal"
+                                                            src="/storage/{{ $despesa->image }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -106,6 +155,7 @@
             </div>
         @endif
     </div>
+
 </body>
 
 </html>
@@ -115,15 +165,13 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script>
-    var data = <?php echo json_encode($dates); ?>;    
-    var valor = <?php echo json_encode($valores); ?>;   
-    Highcharts.chart('container', {
+    var data = <?php echo json_encode($dates); ?>;    var valor = <?php echo json_encode($valores); ?>;    Highcharts.chart('container', {
 
         title: {
             text: 'Suas despesas'
         },
         xAxis: {
-            categories:data,
+            categories: data,
             title: {
                 text: 'data'
             },
@@ -153,7 +201,7 @@
 
         series: [{
             name: 'despesas',
-            data:valor
+            data: valor
         }]
     });
 

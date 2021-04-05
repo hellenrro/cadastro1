@@ -22,7 +22,7 @@ class CreateDespesas extends Migration
                 $table->string('image');
                 $table->decimal('valor', 8, 2);
                 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-                $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade')->onUpdate('cascade');
+                $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('set null')->onUpdate('cascade');
 
                 $table->timestamps();
         });

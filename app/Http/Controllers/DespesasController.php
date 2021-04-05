@@ -51,6 +51,10 @@ class DespesasController extends Controller
         $path = $request->file('image')->store('despesas', 'public');
         $valor= $request->input('valor');
         $valorDespesa  = str_replace(',', '.', $valor );
+        $valorDespesa = (float) $valorDespesa;
+        
+        
+
 
         $despesa = new Despesa();
         $despesa->valor = $valorDespesa;
@@ -81,14 +85,15 @@ class DespesasController extends Controller
         $validacao = [
             'valor' => 'required',
             'descricao' => 'required|string|max:200',
-            'image' => 'required|image',
+            'image' => 'required|image|max:8192',
             'data'=>'required'
         ];
 
         $mensagem = [
             'descricao.required' => 'O campo descrição é obrigatório!',
             'valor.required' => 'O campo valor é obrigatório!',
-            'imagem.required' => 'selecine uma imagem!',
+            'image.required' => 'selecine uma imagem!',
+            'image.max'=>'Tamanho de imagem muito grande',
             'descricao.string' => 'Formato de decrição inválido!',
             'image.image' => 'Somente é permitido fotos !',
             'descricao.max' => 'A descrição deve conter no máximo 200 caracteres!',

@@ -7,7 +7,7 @@
                     @csrf
                     <div class="row m-1 mx-0">
                         <div class="col mx-0">
-                            <input type="date" id="input"
+                            <input type="date" id="input" value="{{$despesa->data}}"
                                 class="form-control  {{ $errors->has('data') ? 'is-invalid' : '' }}" name="data" id="data"
                                 placeholder="data">
                             @if ($errors->has('data'))
@@ -17,7 +17,7 @@
                             @endif
                         </div>
                         <div class="col mx-0 ">
-                            <input type="text" id="input"
+                            <input type="text" id="valor" value="{{$despesa->valor}}"
                                 class="form-control   {{ $errors->has('valor') ? 'is-invalid' : '' }}" name="valor"
                                 id="valor" placeholder="valor">
                             @if ($errors->has('valor'))
@@ -30,22 +30,23 @@
 
                     <div class="form-group m-2">
                         <label>Descrição da Despesa</label>
-                        <textarea id="input" class="form-control {{ $errors->has('descricao') ? 'is-invalid' : '' }}"
+                        <textarea id="input"  class="form-control {{ $errors->has('descricao') ? 'is-invalid' : '' }}"
                             name="descricao" id="descricao" placeholder="despesa">
                                 @if ($errors->has('descricao'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('descricao') }}
                                     </div>
                             @endif
-                            </textarea>
+                            {{$despesa->descricao}}
+                        </textarea>
                     </div>
 
                     <div class="form-group">
-                        <input type="file" id="image" id="input" name="image" class="from-control-file"
-                            {{ $errors->has('imagem') ? 'is-invalid' : '' }}>
-                        @if ($errors->has('imagem'))
+                        <input type="file" id="image" id="input" name="image"  class="from-control-file"
+                            {{ $errors->has('image') ? 'is-invalid' : '' }}>
+                        @if ($errors->has('image'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('imagem') }}
+                                {{ $errors->first('image') }}
                             </div>
                         @endif
                     </div>
